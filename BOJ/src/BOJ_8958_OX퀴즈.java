@@ -9,7 +9,6 @@ public class BOJ_8958_OX퀴즈 {
         String arr[] = new String[TC];
 
         for(int i = 0; i<TC;i++){
-
             arr[i] = br.readLine();
         }
         for(int i = 0;i< TC;i++){
