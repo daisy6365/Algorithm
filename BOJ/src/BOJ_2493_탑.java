@@ -1,32 +1,47 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class BOJ_2493_탑 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
 
-        Stack<Integer> top = new Stack<>();
-        for(int i = 0;i<N;i++) {
-            top.push(sc.nextInt());
-        }
-        int [] count_list = new int[N];
-        int right_top;
-        int left_top;
-        while(top.size()!=1){
-            int i = 0;
-            right_top = top.pop();
-            left_top = top.peek();
+        Stack<Tower> towers = new Stack<>();
+        StringBuilder sb = new StringBuilder();
 
-            if(left_top >= right_top){
-                count_list[i]++;
-                i++;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for(int i = 1; i<=N;i++){
+            //지금 들어오는 탑의 정보
+            Tower now_t = new Tower(i, Integer.parseInt(st.nextToken()));
+
+            while(!towers.isEmpty()&& towers.peek().height < now_t.height ){
+                //탑(스택)이 비어있거나 지금 들어오는 탑보다 이전에 있는탑이 작을때
+                //탑(스택)이 있다면 현재 탑보다 낮은 애들은 다 버림
+                towers.pop();
+
             }
-            else{i++;continue;}
-
+            if(towers.isEmpty()){
+                //다 비었을때 -> 아무도 현재탑의 레이저를 못받음
+                sb.append("0 ");
+            }
+            else {
+                //키큰 탑만 남았을때
+                sb.append(towers.peek().num + " ");
+            }
+            //현재탑 입장
+            towers.push(now_t);
         }
-        for(int i = 0;i<N;i++) {
-            System.out.println(count_list[i]);
+        System.out.println(sb.toString());
+    }
+
+    static class Tower{
+        int num,height;
+        Tower(int num, int height){
+            this.num = num;
+            this.height = height;
         }
     }
 }
