@@ -27,17 +27,16 @@ public class SWEA_2001_파리퇴치 {
                             sum += arr[i + k][j + k2];
                         }
                     }
-                    if (max < sum) {
-                        max = sum;
-                    }
+                    max = Math.max(max,sum);
 
                 }
 
             }
             System.out.println("#" + test_case + " " + max);
 
-
         }
-
     }
 }
+
+
+

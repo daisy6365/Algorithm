@@ -9,26 +9,25 @@ public class SWEA_1208_Flatten {
     public static void main(String args[]) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for (int test_case = 1; test_case <= 10; test_case++) {
+        for (int tc = 1; tc <= 10; tc++) {
+            int N = Integer.parseInt(br.readLine());
 
-            int count = Integer.parseInt(br.readLine());
-            int box[] = new int[100];
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int [] flatten = new int[100];
+            StringTokenizer st = new StringTokenizer(br.readLine()," ");
+
+
             for (int i = 0; i < 100; i++) {
-                box[i] = Integer.parseInt(st.nextToken());
-
+                flatten[i] = Integer.parseInt(st.nextToken());
             }
-            Arrays.sort(box);
-            for (int i = 0; i < count; i++) {
-                Arrays.sort(box);
-                box[0] += 1;
-                box[99] -= 1;
+
+            for (int i = 0; i < N; i++) {
+                Arrays.sort(flatten);
+                flatten[0] += 1;
+                flatten[99] -= 1;
             }
-            Arrays.sort(box);
-            System.out.println("#" + test_case + " " + (box[99] - box[0]));
+            Arrays.sort(flatten);
 
-
+            System.out.println("#"+tc+" "+(flatten[99]-flatten[0]));
         }
-
     }
 }

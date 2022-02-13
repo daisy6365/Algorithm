@@ -8,30 +8,29 @@ public class SWEA_3499_퍼펙트셔플 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int TC = Integer.parseInt(br.readLine());
 
-        for(int tc =1 ;tc<=TC;tc++){
+        for (int tc = 1; tc <= TC; tc++) {
             int N = Integer.parseInt(br.readLine());
-            String[] before_arr = new String[N];
-            StringTokenizer st = new StringTokenizer(br.readLine());
 
-            for(int i=0;i<N;i++){
-                before_arr[i] = st.nextToken();
+            StringTokenizer st = new StringTokenizer(br.readLine()," ");
+            String [] arr1 = new String[N/2 + (N%2)];
+            String [] arr2 = new String[N/2];
+            for (int i = 0; i < arr1.length; i++) {
+                arr1[i] = st.nextToken();
+            }
+            for (int i = 0; i < arr2.length; i++) {
+                arr2[i] = st.nextToken();
             }
 
-            int half = (N+1)/2;
-            String[] head_arr = new String[N];
-            String[] tail_arr = new String[N];
-            for(int j=0;j<half-1;j++){
-                if(j %2 ==0){
-                    head_arr[j] = before_arr[j];
-                }
-                if(j %2 == 1){
-                    tail_arr[j] = before_arr[j+half];
-                }
-            }
             System.out.print("#"+tc+" ");
-            for(int i=0;i<N;i++){
+            for (int i = 0; i < arr2.length; i++) {
+                System.out.print(arr1[i]+" ");
+                System.out.print(arr2[i]+" ");
+            }
+            if(N%2 == 1){
+                System.out.print(arr1[arr1.length-1]);
             }
             System.out.println();
+
         }
     }
 }
