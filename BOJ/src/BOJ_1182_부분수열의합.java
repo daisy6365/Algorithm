@@ -21,11 +21,10 @@ public class BOJ_1182_부분수열의합 {
             num_arr[n] = Integer.parseInt(st.nextToken());
         }
 
-        recursion(0,0,num_arr,0);
-        System.out.println(result);
+        recursion(0,num_arr,0);
+        System.out.println(result-1);
     }
-    static void recursion(int cnt, int a, int num_arr[], int sum) {
-
+    static void recursion(int cnt, int num_arr[], int sum) {
         if (cnt == N) {
             int falseCnt = 0;
             for (int i = 0; i < N; i++) {
@@ -37,13 +36,14 @@ public class BOJ_1182_부분수열의합 {
                 if (sum == S) {
                     result++;
                 }
+
             }
             return;
         }
         isSelected[cnt] = true;
-        recursion(cnt + 1, a + 1, num_arr, sum + num_arr[cnt]);
+        recursion(cnt + 1, num_arr, sum + num_arr[cnt]);
         isSelected[cnt] = false;
-        recursion(cnt + 1, a, num_arr, sum);
+        recursion(cnt + 1, num_arr, sum);
     }
 
 }
