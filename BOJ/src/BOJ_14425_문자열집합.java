@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ_14425_문자열집합 {
     public static void main(String[] args) throws IOException {
@@ -13,20 +11,16 @@ public class BOJ_14425_문자열집합 {
         int M = Integer.parseInt(st.nextToken()); //주어지는 문자열 갯수 (비교대상)
         int count = 0; //카운트 변수
 
-        List<String> S = new ArrayList<>();
+        Set<String> words = new HashSet<>();
         for (int i = 0; i < N; i++) {
-            S.add(br.readLine());
-        }
-        List<String> compareSt = new ArrayList<>();
-        for (int i = 0; i < M; i++) {
-            compareSt.add(br.readLine());
+            words.add(br.readLine());
         }
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                if(S.get(i).equals(compareSt.get(j))){
-                    count++;
-                }
+        for (int i = 0; i < M; i++) {
+            //비교대상 문자열
+            String s = br.readLine();
+            if(words.contains(s)){
+                count++;
             }
         }
         System.out.println(count);
