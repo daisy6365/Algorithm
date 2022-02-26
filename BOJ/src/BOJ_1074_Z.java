@@ -34,7 +34,6 @@ public class BOJ_1074_Z {
         int mi = (si+ei)/2;
         int mj = (sj+ej)/2;
 
-
         visitZ(si, sj, mi, mj); // 1
         visitZ(si, mj, mi, ej); // 2
         visitZ(mi, sj, ei, mj); // 3
