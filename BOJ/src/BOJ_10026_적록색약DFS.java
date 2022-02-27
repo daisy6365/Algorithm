@@ -28,7 +28,7 @@ public class BOJ_10026_적록색약DFS {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if(!isSelectedNomal[i][j]){
-                    nomalDfs(i,j);
+                    normalDfs(i,j);
                     //bfs(i,j)
                     countNomal++;
                 }
@@ -41,7 +41,7 @@ public class BOJ_10026_적록색약DFS {
         }
         System.out.println(countNomal+" "+countSpecial);
     }
-    public static void nomalDfs(int nowi, int nowj){
+    public static void normalDfs(int nowi, int nowj){
         isSelectedNomal[nowi][nowj] = true;
         for (int i = 0; i < 4; i++) {
             int nexti = nowi + di[i];
@@ -49,7 +49,7 @@ public class BOJ_10026_적록색약DFS {
 
             if(nexti >=0 && nextj >= 0 && nexti < N && nextj<N ){
                 if(!isSelectedNomal[nexti][nextj] && RGB[nowi][nowj] == RGB[nexti][nextj]){
-                    nomalDfs(nexti,nextj);
+                    normalDfs(nexti,nextj);
                 }
             }
         }

@@ -30,7 +30,7 @@ public class BOJ_10026_적록색약BFS {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if(!isSelectedNomal[i][j]){
-                    nomalBFS(i,j);
+                    normalBFS(i,j);
                     //bfs(i,j)
                     countNomal++;
                 }
@@ -43,7 +43,7 @@ public class BOJ_10026_적록색약BFS {
         }
         System.out.println(countNomal+" "+countSpecial);
     }
-    public static void nomalBFS(int nowi, int nowj){
+    public static void normalBFS(int nowi, int nowj){
         Queue<int[]> qu = new LinkedList<int[]>();
         qu.add(new int[] { nowi, nowj });
 
@@ -59,7 +59,7 @@ public class BOJ_10026_적록색약BFS {
 
                 if(nexti >=0 && nextj >= 0 && nexti < N && nextj<N ){
                     if(!isSelectedNomal[nexti][nextj] && RGB[nowi][nowj] == RGB[nexti][nextj]){
-                        nomalBFS(nexti,nextj);
+                        normalBFS(nexti,nextj);
                     }
                 }
 
