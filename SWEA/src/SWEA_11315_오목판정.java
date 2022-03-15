@@ -21,6 +21,7 @@ public class SWEA_11315_오목판정 {
                 }
             }
 
+
             boolean flag = false;
              for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
