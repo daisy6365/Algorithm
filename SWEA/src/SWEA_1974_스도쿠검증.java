@@ -54,8 +54,7 @@ public class SWEA_1974_스도쿠검증 {
                         flag = false;
                         break;
                     }
-                }
-            }
+                }         }
 
             //3X3
             for (int i = 0; i <= 6; i+=3) {
