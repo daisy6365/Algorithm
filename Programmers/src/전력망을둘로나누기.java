@@ -15,7 +15,6 @@ public class 전력망을둘로나누기 {
         System.out.println(tc3);
     }
 
-
     public static int solution(int n, int[][] wires) {
         int answer = 100;
         map = new int[n+1][n+1];
@@ -38,7 +37,6 @@ public class 전력망을둘로나누기 {
                 if(isSelected[j]){
                     break;
                 }
-
                 int a = bfs(j);
                 int b = n - a;
                 answer = Math.min(answer, Math.abs(a-b));
@@ -46,7 +44,6 @@ public class 전력망을둘로나누기 {
             map[wires[i][0]][wires[i][1]] = 1;
             map[wires[i][1]][wires[i][0]] = 1;
         }
-
         return answer;
     }
 
