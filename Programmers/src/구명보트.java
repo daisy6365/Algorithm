@@ -4,26 +4,25 @@ public class 구명보트 {
     public static void main(String[] args) {
         int[] array = {70, 50, 80, 50};
         int[] array2 = {70, 80, 50};
+        int[] array3 = {30, 40, 50, 60, 80};
         System.out.println(solution(array, 100));
         System.out.println(solution(array2, 100));
+        System.out.println(solution(array3, 100));
     }
 
     public static int solution(int[] people, int limit) {
         int answer = 0;
-        for (int i = 0; i < people.length; i++) {
-            boolean flag = false;
-            for (int j = i+1; j < people.length; j++) {
-                int sum = people[i] + people[j];
-                if(sum <= limit){
-                    System.out.println("jjjjjj i = "+ i);
-                    flag = true;
-                    answer++;
-                }
+
+        Arrays.sort(people);
+        int i = 0;
+
+        // 무거운 사람부터 확인
+        for (int j = people.length - 1 ; j >= i ; j--) {
+            int sum = people[i] + people[j];
+            if(sum <= limit) {
+                i++;
             }
-            if (!flag){
-                System.out.println("dddd i = "+ i);
-                answer++;
-            }
+            answer++;
         }
         return answer;
     }
