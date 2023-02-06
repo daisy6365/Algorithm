@@ -1,27 +1,24 @@
 public class 점프와순간이동 {
     public static void main(String[] args) {
-        System.out.println(solution(5, 24));
-
-        // 추가 테스트 케이스
-        System.out.println(solution(1, 1));
-        System.out.println(solution(2, 29));
-        System.out.println(solution(7, 31));
-        System.out.println(solution(12, 31));
-
+        System.out.println(solution(5));
+        System.out.println(solution(6));
+        System.out.println(solution(5000));
     }
-    public static String solution(int a, int b) {
-        String[] week = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
-        int[] month_day = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static int solution(int n) {
+        int ans = 0;
 
-        int week_num = 5;
-
-        for (int i = 1; i <= a; i++) {
-            for (int j = 1; j <= month_day[i-1] ; j++) {
-                if(i == a && j == b) break;
-                week_num++;
-                if(week_num == 7) week_num = 0;
+        while(true){
+            if(n == 0) break;
+            // 짝수라면? -> 나눌때 정수가 됨
+            if(n % 2 == 0){
+                n /= 2;
+            }
+            // 정수가 안됨 -1(점프)해야함
+            else{
+                n = (n-1) / 2;
+                ans++;
             }
         }
-        return week[week_num];
+        return ans;
     }
 }
