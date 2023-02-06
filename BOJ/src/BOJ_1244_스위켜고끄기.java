@@ -13,6 +13,8 @@ public class BOJ_1244_스위켜고끄기 {
         Boolean[] switch_arr = new Boolean[switch_count];
         StringTokenizer st= new StringTokenizer(br.readLine()," ");
         for (int i = 0; i < switch_count; i++) {
+
+            // 삼항연산자
             if(Integer.parseInt(st.nextToken()) == 1) switch_arr[i] = true;
             else switch_arr[i] = false;
         }
@@ -25,6 +27,7 @@ public class BOJ_1244_스위켜고끄기 {
 
             if(gender == 1){
                 //남자
+                // j가 증가 할때 배수만큼 증가하도록
                 for (int j = 1; j <= switch_count ; j++) {
                     if(j % number == 0){
                         // 배수일때 바꿈
