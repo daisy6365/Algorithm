@@ -19,7 +19,7 @@ import java.util.StringTokenizer;
 * ^	XOR -> 두 비트가 서로 다르면 1
 * ~	NOT -> 비트 반전(보수)
 * */
-public class BOJ_15787_기차가어둠을헤치은하수를 {
+public class BOJ_15787_기차가어둠을헤치고은하수를 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -31,14 +31,15 @@ public class BOJ_15787_기차가어둠을헤치은하수를 {
             st = new StringTokenizer(br.readLine());
             int command = Integer.parseInt(st.nextToken());
             int i = Integer.parseInt(st.nextToken());
+
             if(command == 1){
                 // i번째 기차 x번좌석에 탑승
-                int x = Integer.parseInt(st.nextToken());
+                int x = Integer.parseInt(st.nextToken()) - 1;
                 train_seats[i] |= (1 << x);
             }
             else if(command == 2){
                 // i번째 기차 x번좌석에 하차
-                int x = Integer.parseInt(st.nextToken());
+                int x = Integer.parseInt(st.nextToken()) - 1;
                 train_seats[i] &= ~(1 << x);
             }
             else if(command == 3){
@@ -51,13 +52,12 @@ public class BOJ_15787_기차가어둠을헤치은하수를 {
                 // i번째 기차 좌석 K-1
                 // 1번째 하차
                 train_seats[i] = train_seats[i] >>> 1;
-                train_seats[i] &= ~(1 << 1);
             }
 
         }
 
         Set<Integer> pass_train = new HashSet<>();
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             pass_train.add(train_seats[i]);
         }
         System.out.println(pass_train.size());
