@@ -4,49 +4,56 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+// 다시 풀이
 public class BOJ_14889_스타트와링크 {
-    static int N,min;
-    static int[][] skills;
+    static int N;
+    static int[][] map;
+    static int min = Integer.MAX_VALUE;
     static boolean[] isSelected;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(br.readLine());
+        StringTokenizer st;
 
-        skills = new int[N][N];
+        N = Integer.parseInt(br.readLine());
+        map = new int[N][N];
         isSelected = new boolean[N];
-        min = Integer.MAX_VALUE;
+
+        // 스타트링크 정보 받음
         for (int i = 0; i < N; i++) {
-            StringTokenizer st= new StringTokenizer(br.readLine()," ");
+            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
-                skills[i][j] = Integer.parseInt(st.nextToken());
+                map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        soccer(0,0);
+        // 재귀 탐색 시작
+        startlinkMinValue(0 , 0);
         System.out.println(min);
     }
-    public static void soccer(int idx, int start){
+
+    private static void startlinkMinValue(int idx, int start){
+        // 절반 -> 절반만 탐색할거잖어
         if(idx == N/2){
-            System.out.println(Arrays.toString(isSelected));
             int startTeam=0, linkTeam =0;
             for (int i = 0; i < N-1; i++) {
                 for (int j = i+1; j < N; j++) {
                     if(isSelected[i] && isSelected[j]){
-                        startTeam += skills[i][j] + skills[j][i];
+                        startTeam += map[i][j] + map[j][i];
                     }
                     if(!isSelected[i] && !isSelected[j]){
-                        linkTeam += skills[i][j] + skills[j][i];
+                        linkTeam += map[i][j] + map[j][i];
                     }
                 }
-                
+
             }
             int result = Math.abs(startTeam-linkTeam);
             min = Math.min(min,result);
             return;
         }
+
         for (int i = start; i < N; i++) {
             isSelected[i] = true;
-            soccer(idx+1,i+1);
+            startlinkMinValue(idx + 1, i + 1);
             isSelected[i] = false;
         }
     }
