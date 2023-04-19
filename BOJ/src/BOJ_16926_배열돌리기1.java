@@ -29,19 +29,19 @@ public class BOJ_16926_배열돌리기1 {
                 int temp = arr[i][i]; // 0,0 1,1 2,2
                 // 상
                 for(int j = i+1 ; j < M- i ; j++){
-                    arr[i][j-1] = arr[i][j];
+                    arr[i][j-1] = arr[i][j]; // 오른쪽 값을 왼쪽으로 이동
                 }
                 // 우
                 for(int j = i+1 ; j < N - i ; j++){
-                    arr[j-1][M-1-i] = arr[j][M-1-i];
+                    arr[j-1][M-1-i] = arr[j][M-1-i]; // 아래 값을 위로 이동
                 }
                 // 하
                 for(int j = M-2-i ; j >= i ; j--){
-                    arr[N-1-i][j+1] = arr[N-1-i][j];
+                    arr[N-1-i][j+1] = arr[N-1-i][j]; // 왼쪽 값을 오른쪽으로 이동
                 }
                 // 좌
                 for(int j = N-2-i ; j >= i ; j--){
-                    arr[j+1][i] = arr[j][i];
+                    arr[j+1][i] = arr[j][i]; // 위값을 아래로 이동
                 }
 
                 // 바로 아래에 넣기
